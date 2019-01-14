@@ -1,0 +1,103 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/static/UserM.css">
+    {%  from "includes/_formhelper.html" import render_field %}
+<style>
+.login100-form-btn {margin-bottom:50px}
+ul {
+    list-style-type: none;
+    margin: 0 0 0 100px;
+    padding: 0;
+    overflow: hidden;
+    }
+
+li {
+    float: left;
+	border-right: 1px solid #bbb
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 50px 50px;
+	text-decoration: none;
+	background-color: #333;
+}
+
+li a:hover {
+    background-color: #0099ff;
+}
+</style>
+<script>
+function myFunction() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
+</script>
+</head>
+<body>
+<ul>
+    <li><a class="active" href="/homepage">Home</a></li>
+    <li><a href="#reportaproblem">Report a Problem</a></li>
+    <li><a href="/login">Login/Register</a></li>
+    <li><a href="#Excuse Pass">Proof for E-Excuse Pass for Train Breakdown</a>
+</ul>
+{% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+{% endfor %}
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic">
+					<img src="/static/images/img-01.png">
+				</div>
+
+
+				<form class="login100-form" method="post" action="/login">
+					<span class="login100-form-title">
+						Login
+					</span>
+
+					<div class="wrap-input100">
+                        {{ render_field(form.id, class='input100') }}
+					</div>
+
+					<div class="wrap-input100">
+						{{ render_field(form.password, class='input100') }}
+						<input type="checkbox" onclick="myFunction()">Show Password
+					</div>
+
+					<div class="container-login100-form-btn">
+                        {{ form.submit (class = "login100-form-btn") }}
+					</div>
+
+					<div class="text-center">
+						<span class="txt1">
+							Change
+						</span>
+						<a class="txt2" href="/changepassword">
+							Password
+						</a>
+					</div>
+
+					<div class="text-center">
+						<a class="txt2" href="/register">
+							Register
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+
+
+</body>
+</html>

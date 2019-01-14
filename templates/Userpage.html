@@ -1,0 +1,110 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Report</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/static/UserM.css">
+    {%  from "includes/_formhelper.html" import render_field %}
+<style>
+.login100-form-btn {margin-bottom:50px}
+ul {
+    list-style-type: none;
+    margin: 0 0 0 100px;
+    padding: 0;
+    overflow: hidden;
+    }
+
+li {
+    float: left;
+	border-right: 1px solid #bbb
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 50px 50px;
+	text-decoration: none;
+	background-color: #333;
+}
+
+li a:hover {
+    background-color: #0099ff;
+}
+
+.login100-form-btn {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #fff;
+  text-transform: uppercase;
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #333;
+  padding: 0 25px;
+  transition: all 0.4s;
+}
+
+.login100-form-btn:hover {
+  background: #0099ff;
+    cursor: pointer
+}
+</style>
+
+</head>
+<body>
+<ul>
+    <li><a class="active" href="Home Page">Home</a></li>
+    <li><a href="#reportaproblem">Report a Problem</a></li>
+    <li><a href="/login">Login/Register</a></li>
+    <li><a href="/ExcuseForm">Proof for E-Excuse Pass for Train Breakdown</a>
+</ul>
+
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic">
+					<img src="/static/images/create.jpg">
+				</div>
+
+				<form class="login100-form" method="post">
+					<span class="login100-form-title">
+						Request form
+					</span>
+
+					<div class="wrap-input100">
+						{{ render_field(form.problem, class='input100') }}
+					</div>
+
+					<div class="wrap-input100">
+						{{ render_field(form.description, class='input100') }}
+
+					</div>
+
+					<div class="wrap-input100">
+						{{ render_field(form.location, class='input100') }}
+					</div>
+
+                    <div class="wrap-input100">
+						{{ render_field(form.date, class='input100') }}
+					</div>
+
+
+					<div class="container-login100-form-btn">
+                        {{ form.submit (class = "login100-form-btn", value="Upload") }}
+					</div>
+
+					<div class="text-center">
+						<a class="txt2" href="/homepage">
+							Home
+						</a>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
