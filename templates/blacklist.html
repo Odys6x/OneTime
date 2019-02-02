@@ -6,26 +6,22 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="/static/UserM.css">
+	<link rel="stylesheet" type="text/css" href="/static/Nav.css">
     {%  from "includes/_formhelper.html" import render_field %}
 <style>
 .login100-form-btn {margin-bottom:50px}
 ul {
     list-style-type: none;
-    margin: 0 0 0 100px;
     padding: 0;
     overflow: hidden;
     }
 
-li {
-    float: left;
-	border-right: 1px solid #bbb
-}
+
 
 li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 50px 50px;
 	text-decoration: none;
 	background-color: #333;
 }
@@ -34,21 +30,18 @@ li a:hover {
     background-color: #0099ff;
 }
 </style>
+	<ul>
+    <li><a class="active" href="Adminhomepage">Home</a></li>
+	</ul>
 </head>
 <body>
-<ul>
-    <li><a class="active" href="#home">Home</a></li>
-    <li><a href="#reportaproblem">Report a Problem</a></li>
-    <li><a href="#account">Login/Register</a></li>
-    <li><a href="#Excuse Pass">Proof for E-Excuse Pass for Train Breakdown</a>
-</ul>
 {% for message in get_flashed_messages() %}
     <div class="flash">{{ message }}</div>
 {% endfor %}
 		<div class="container-login100">
 			<div class="wrap-login100">
 
-				<form class="login100-form" method="post">
+				<form class="login100-form" method="post" action="/blacklist">
 					<span class="login100-form-title">
 						Blacklist
 					</span>

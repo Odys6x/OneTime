@@ -2,10 +2,21 @@ from wtforms import StringField, IntegerField, TextAreaField, SubmitField, Radio
 from wtforms import validators, ValidationError
 
 
-class RequestForm(Form):
-    problem = StringField('Problem', [validators.DataRequired('Please enter your problems.')])
-    description = StringField('Description', [validators.DataRequired('Please enter description.')])
-    location = StringField('Where is your location', [validators.DataRequired('Please enter your location.')])
-    date    = StringField('Enter your date here', [validators.DataRequired('Please enter description.')])
+class RForm(Form):
+
+
+    problem = StringField('Problems', [validators.DataRequired('Please enter problem')])
+
+    description = StringField('Description of Problem', [validators.DataRequired('Please type description of incident')])
+
+    location = StringField('Location of Problem', [validators.DataRequired('Please type location of incident')])
+
+    date = StringField('Date of Problem', [validators.DataRequired('Please enter date of incident')])
+
+    comments =  StringField('Comments ', [validators.DataRequired('Please enter comments of incident')])
+
+    name      = StringField('Enter name', [validators.DataRequired('Please enter Name')])
+
     submit = SubmitField('Submit')
+
 

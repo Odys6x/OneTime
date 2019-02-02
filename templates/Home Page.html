@@ -1,57 +1,244 @@
-<!doctype html>
+
+<!DOCTYPE HTML>
 <html>
+<header>
+<h1>SG Trains</h1>
+<nav>
+<ul>
+    <li><a href="/viewcomment">View blogs</a></li>
+	<li><a class="active" href="/homepage">Home</a></li>
+    <li><a href="/excuseslip">E-Slip</a></li><br>
+
+
+
+</ul>
+</nav>
+</header>
 <head>
-  <meta charset="utf-8">
-  <title>Random</title>
-    {%  from "includes/_formhelper.html" import render_field %}
-</head>
+<title>SG Trains</title>
+<link rel="stylesheet" href="help.css"/>
+<link rel="stylesheet" href="style.css"/>
+
 <style>
-ul {
-    list-style-type: none;
+body {
+	text-align:center;
+	font-family:Verdana;
+	list-style-position:inside;
+
+}
+
+
+#okok {
+	background-color:rgba(0,0,0,0.2);
+	border:10px;
+
+}
+div .happy{
+	display:inline-block;
+	text-decoration:none;
+	background-color:black;
+	color:white;
+	border-radius:10px;
+	padding:10px;
+	width:200px;
+	margin-bottom:15px;
+	transition: all 200ms linear;
+	}
+
+
+div .happy:hover {
+	       background-color:white;
+	       color:black;
+		   width:300px;
+	}
+
+
+h1 {
+    font-family: 'Pacifico', cursive;
+}
+
+header h1{
+       font-family: 'Great Vibes', cursive;
+}
+nav li {
+	display:inline-block;
+
+
+}
+
+
+
+nav li a {
+	display:inline-block;
+	text-decoration:none;
+	background-color:black;
+	color:white;
+	border-radius:10px;
+	padding:10px;
+	width:100px;
+	margin-bottom:20px;
+	transition: all 200ms linear;
+}
+nav li a:hover {
+	background-color:white;
+	color:black;
+	width: 200px;
+
+}
+
+nav li .current{
+    display:inline-block;
+	text-decoration:none;
+	background-color:black;
+	color:white;
+	border-radius:10px;
+	padding:5px;
+	width:100px;
+	margin-left:20px;
+	transition: all 200ms linear;
+}
+
+nav ul a.current:hover{
+       color:black
+       }
+
+#calendar{
+    width: 130px;
+    height: 180px;
+    color: black;
+    border-radius: 5%;
+    box-shadow: 0 4px 4px 0 rgba(50, 50, 50, 0.4);
+
+}
+
+
+#calendar>p{
+    font-family: Verdana, Arial, sans-serif;
+    padding: 10px 0;
     margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-li {
-    float: left;
-}
-
-li a {
-    display: block;
-    color: white;
+    color: black;
     text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
 }
 
-li a:hover {
-    background-color: #0099ff;
+#calendar-day{
+    font-size: 16px;
 }
+
+#calendar-month-year{
+    font-size: 14px;
+}
+
+#calendar-date{
+    font-size: 64px;
+    padding-top: 10px;
+    padding-bottom: 0;
+}
+
+
+
+
+
+
 </style>
 
-<script>
-var button = document.querySelector('.button');
-
-button.onclick = function () {
- var red = Math.floor(Math.random() * 256);
- var blue = Math.floor(Math.random() * 256);
- var green = Math.floor(Math.random() * 256);
-
- this.style.backgroundColor = "rgb(" + red + "," + green + "," + blue + ")";
-};
-</script>
-
-<div>
-</div>
+</head>
 
 <body>
-<ul>
-  <li><a class="active" href="#home">Home</a></li>
-  <li><a href="#reportaproblem">Report a Problem</a></li>
-  <li><a href="#account">Login/Register</a></li>
-</ul>
-</body>
+<div>
+<h1 id="top">Welcome</h1>
+<span id="calendar">
+  <p id="calendar-day"></p>
+  <p id="calendar-date"></p>
+  <p id="calendar-month-year"></p>
+</span>
+<br>
+<a class="happy" href="/logout">Log Out</a><br>
 
+<div class="slideshow-container">
+
+
+<div class="mySlides fade">
+  <img src="/static/images/31597683.jpg" style="width:50%">
+  <div class="text">Integrating</div>
+</div>
+
+<div class="mySlides fade">
+  <img src="/static/images/SMRT-Trains-4.webp" style="width:40%">
+  <div class="text">Our innovations</div>
+</div>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+<script>
+
+
+    var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 5000);
+}
+
+
+//this function will find today's date
+function calendar(){
+    var day=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    var month=['January','February','March','April','May','June','July','August','September','October','November','December'];
+    var d=new Date();
+    setText('calendar-day', day[d.getDay()]);
+    setText('calendar-date', d.getDate());
+    setText('calendar-month-year', month[d.getMonth()]+' '+(1900+d.getYear()));
+};
+
+//this function will set the text value of <p> tags
+function setText(id, val){
+    if(val < 10){
+        val = '0' + val;    //add leading 0 if val < 10
+    }
+    document.getElementById(id).innerHTML = val;
+};
+
+
+//call calendar() when page load
+window.onload = calendar;
+
+
+</script>
+</div>
+<h1>What We Do</h1>
+<p>We serve to our commuters for a safe and comfortable journey.</p>
+<div id="okok">
+<h2>Services</h2>
+    <a class='happy' href="/report">Report a Problem</a><br>
+
+    <a class='happy' href="/incident">Excuse Slip Application</a><br>
+
+    <a class='happy' href="/viewnews">News</a><br>
+
+
+</div>
+
+
+
+
+</body>
 </html>

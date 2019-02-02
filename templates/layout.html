@@ -2,13 +2,66 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Adminpage</title>
+    <title>View results</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="/static/Nav.css">
+
+    <style>
+        .danger{
+  transition-duration: 0.4s;
+  text-align: center;
+  background-color: red;
+  border-radius: 12px;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  cursor: pointer;
+        }
+
+        .danger:hover{
+  text-align: center;
+  background-color: white; /* Green */
+  color: black;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
 </head>
 <body>
+<script>
+    var person;
 
+
+function Myfunction(){
+         person = prompt("Enter your comment");
+         localStorage.setItem('person', JSON(person));
+}
+
+
+
+
+
+
+
+
+</script>
+    <ul>
+        <li><a class="active" href="homepage">Home</a></li>
+
+    </ul>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
@@ -17,7 +70,6 @@
 {%  block additionalscripts %}{% endblock %}
 
 <div class="container-fluid">
-{#    {% include 'includes/_navbar.html' %}#}
 {#    {% include 'includes/_message.html' %}#}
 
     {% block body %}{% endblock %}

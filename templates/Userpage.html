@@ -6,29 +6,31 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="/static/UserM.css">
+	<link rel="stylesheet" type="text/css" href="/static/Nav.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+
     {%  from "includes/_formhelper.html" import render_field %}
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+
+  function Myfunc() {
+
+      alert("Uploaded Successfully!");
+
+  }
+
+  </script>
 <style>
+
+
 .login100-form-btn {margin-bottom:50px}
-ul {
-    list-style-type: none;
-    margin: 0 0 0 100px;
-    padding: 0;
-    overflow: hidden;
-    }
 
-li {
-    float: left;
-	border-right: 1px solid #bbb
-}
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 50px 50px;
-	text-decoration: none;
-	background-color: #333;
-}
 
 li a:hover {
     background-color: #0099ff;
@@ -51,23 +53,61 @@ li a:hover {
   background: #0099ff;
     cursor: pointer
 }
+
+
+.ape{
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  border-radius: 50%;
+  position: relative;
+  -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+  -webkit-animation-iteration-count: 3; /* Safari 4.0 - 8.0 */
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+
+}
+
+
+
+
+
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+  0%   {background-color:red; left:0px; top:0px;}
+  25%  {background-color:yellow; left:200px; top:0px;}
+  50%  {background-color:blue; left:200px; top:200px;}
+  75%  {background-color:green; left:0px; top:200px;}
+  100% {background-color:red; left:0px; top:0px;}
+}
+
+/* Standard syntax */
+@keyframes example {
+  0%   {background-color:red; left:0px; top:0px;}
+  25%  {background-color:yellow; left:200px; top:0px;}
+  50%  {background-color:blue; left:200px; top:200px;}
+  75%  {background-color:green; left:0px; top:200px;}
+  100% {background-color:red; left:0px; top:0px;}
+}
 </style>
 
 </head>
 <body>
-<ul>
-    <li><a class="active" href="Home Page">Home</a></li>
-    <li><a href="#reportaproblem">Report a Problem</a></li>
-    <li><a href="/login">Login/Register</a></li>
-    <li><a href="/ExcuseForm">Proof for E-Excuse Pass for Train Breakdown</a>
-</ul>
+    <ul>
+		<li><a class="active" href="/homepage">Home</a></li>
+    </ul>
+
 
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<div class="login100-pic">
-					<img src="/static/images/create.jpg">
-				</div>
 
+                <div class="ape"></div>
+
+                               <div></div>
+                               <div></div>
 				<form class="login100-form" method="post">
 					<span class="login100-form-title">
 						Request form
@@ -87,19 +127,16 @@ li a:hover {
 					</div>
 
                     <div class="wrap-input100">
-						{{ render_field(form.date, class='input100') }}
+						{{ render_field(form.date, class='input100',type="text", id="datepicker") }}
 					</div>
 
 
 					<div class="container-login100-form-btn">
-                        {{ form.submit (class = "login100-form-btn", value="Upload") }}
+                        {{ form.submit (class = "login100-form-btn", value="Upload" ) }}
+
 					</div>
 
-					<div class="text-center">
-						<a class="txt2" href="/homepage">
-							Home
-						</a>
-					</div>
+
 
 				</form>
 			</div>
